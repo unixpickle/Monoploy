@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA247B1217958345008013D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA247B1117958345008013D5 /* UIKit.framework */; };
+		FA247B1417958345008013D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA247B1317958345008013D5 /* Foundation.framework */; };
+		FA247B1617958345008013D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA247B1517958345008013D5 /* CoreGraphics.framework */; };
+		FA247B1C17958345008013D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA247B1A17958345008013D5 /* InfoPlist.strings */; };
+		FA247B1E17958345008013D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B1D17958345008013D5 /* main.m */; };
+		FA247B2217958345008013D5 /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B2117958345008013D5 /* ANAppDelegate.m */; };
+		FA247B2417958345008013D5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2317958345008013D5 /* Default.png */; };
+		FA247B2617958345008013D5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2517958345008013D5 /* Default@2x.png */; };
+		FA247B2817958345008013D5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2717958345008013D5 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA247B0E17958345008013D5 /* Monoploy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monoploy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA247B1117958345008013D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA247B1317958345008013D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA247B1517958345008013D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA247B1917958345008013D5 /* Monoploy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Monoploy-Info.plist"; sourceTree = "<group>"; };
+		FA247B1B17958345008013D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA247B1D17958345008013D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA247B1F17958345008013D5 /* Monoploy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monoploy-Prefix.pch"; sourceTree = "<group>"; };
+		FA247B2017958345008013D5 /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
+		FA247B2117958345008013D5 /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
+		FA247B2317958345008013D5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FA247B2517958345008013D5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FA247B2717958345008013D5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA247B0B17958345008013D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA247B1217958345008013D5 /* UIKit.framework in Frameworks */,
+				FA247B1417958345008013D5 /* Foundation.framework in Frameworks */,
+				FA247B1617958345008013D5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA247B0517958345008013D5 = {
+			isa = PBXGroup;
+			children = (
+				FA247B1717958345008013D5 /* Monoploy */,
+				FA247B1017958345008013D5 /* Frameworks */,
+				FA247B0F17958345008013D5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA247B0F17958345008013D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B0E17958345008013D5 /* Monoploy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA247B1017958345008013D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B1117958345008013D5 /* UIKit.framework */,
+				FA247B1317958345008013D5 /* Foundation.framework */,
+				FA247B1517958345008013D5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA247B1717958345008013D5 /* Monoploy */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B2017958345008013D5 /* ANAppDelegate.h */,
+				FA247B2117958345008013D5 /* ANAppDelegate.m */,
+				FA247B1817958345008013D5 /* Supporting Files */,
+			);
+			path = Monoploy;
+			sourceTree = "<group>";
+		};
+		FA247B1817958345008013D5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B1917958345008013D5 /* Monoploy-Info.plist */,
+				FA247B1A17958345008013D5 /* InfoPlist.strings */,
+				FA247B1D17958345008013D5 /* main.m */,
+				FA247B1F17958345008013D5 /* Monoploy-Prefix.pch */,
+				FA247B2317958345008013D5 /* Default.png */,
+				FA247B2517958345008013D5 /* Default@2x.png */,
+				FA247B2717958345008013D5 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA247B0D17958345008013D5 /* Monoploy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA247B2B17958345008013D5 /* Build configuration list for PBXNativeTarget "Monoploy" */;
+			buildPhases = (
+				FA247B0A17958345008013D5 /* Sources */,
+				FA247B0B17958345008013D5 /* Frameworks */,
+				FA247B0C17958345008013D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Monoploy;
+			productName = Monoploy;
+			productReference = FA247B0E17958345008013D5 /* Monoploy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA247B0617958345008013D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AN;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alex Nichol";
+			};
+			buildConfigurationList = FA247B0917958345008013D5 /* Build configuration list for PBXProject "Monoploy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA247B0517958345008013D5;
+			productRefGroup = FA247B0F17958345008013D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA247B0D17958345008013D5 /* Monoploy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA247B0C17958345008013D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA247B1C17958345008013D5 /* InfoPlist.strings in Resources */,
+				FA247B2417958345008013D5 /* Default.png in Resources */,
+				FA247B2617958345008013D5 /* Default@2x.png in Resources */,
+				FA247B2817958345008013D5 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA247B0A17958345008013D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA247B1E17958345008013D5 /* main.m in Sources */,
+				FA247B2217958345008013D5 /* ANAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA247B1A17958345008013D5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA247B1B17958345008013D5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA247B2917958345008013D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FA247B2A17958345008013D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA247B2C17958345008013D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Monoploy/Monoploy-Prefix.pch";
+				INFOPLIST_FILE = "Monoploy/Monoploy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA247B2D17958345008013D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Monoploy/Monoploy-Prefix.pch";
+				INFOPLIST_FILE = "Monoploy/Monoploy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA247B0917958345008013D5 /* Build configuration list for PBXProject "Monoploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA247B2917958345008013D5 /* Debug */,
+				FA247B2A17958345008013D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA247B2B17958345008013D5 /* Build configuration list for PBXNativeTarget "Monoploy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA247B2C17958345008013D5 /* Debug */,
+				FA247B2D17958345008013D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA247B0617958345008013D5 /* Project object */;
+}
