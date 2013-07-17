@@ -22,6 +22,9 @@
 		FA247B3B1795A1B8008013D5 /* ANCardSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3A1795A1B8008013D5 /* ANCardSet.m */; };
 		FA247B3E1795A827008013D5 /* ANBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3D1795A827008013D5 /* ANBoard.m */; };
 		FA247B411795E5B3008013D5 /* ANPossibleBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B401795E5B3008013D5 /* ANPossibleBoard.m */; };
+		FA618B6B1796E2B7008AABD8 /* ANProbabilityMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */; };
+		FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */; };
+		FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,13 @@
 		FA247B3D1795A827008013D5 /* ANBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBoard.m; sourceTree = "<group>"; };
 		FA247B3F1795E5B3008013D5 /* ANPossibleBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPossibleBoard.h; sourceTree = "<group>"; };
 		FA247B401795E5B3008013D5 /* ANPossibleBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPossibleBoard.m; sourceTree = "<group>"; };
+		FA618B691796E2B7008AABD8 /* ANProbabilityMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANProbabilityMap.h; sourceTree = "<group>"; };
+		FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANProbabilityMap.m; sourceTree = "<group>"; };
+		FA618B6E1796E6B7008AABD8 /* ANProbabilityFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANProbabilityFinder.h; sourceTree = "<group>"; };
+		FA618B6F1796E6C6008AABD8 /* ANMarkovFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMarkovFinder.h; sourceTree = "<group>"; };
+		FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANMarkovFinder.m; sourceTree = "<group>"; };
+		FA618B721796EADA008AABD8 /* ANRecursiveFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRecursiveFinder.h; sourceTree = "<group>"; };
+		FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRecursiveFinder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +132,13 @@
 		FA247B2F179583FA008013D5 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				FA618B6D1796E6B7008AABD8 /* Probability Finder */,
 				FA247B3017958421008013D5 /* ANMatrix.h */,
 				FA247B3117958421008013D5 /* ANMatrix.m */,
 				FA247B3F1795E5B3008013D5 /* ANPossibleBoard.h */,
 				FA247B401795E5B3008013D5 /* ANPossibleBoard.m */,
+				FA618B691796E2B7008AABD8 /* ANProbabilityMap.h */,
+				FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */,
 			);
 			name = Statistics;
 			path = Monoploy/Statistics;
@@ -143,6 +156,18 @@
 			);
 			name = Game;
 			path = Monoploy/Game;
+			sourceTree = "<group>";
+		};
+		FA618B6D1796E6B7008AABD8 /* Probability Finder */ = {
+			isa = PBXGroup;
+			children = (
+				FA618B6E1796E6B7008AABD8 /* ANProbabilityFinder.h */,
+				FA618B6F1796E6C6008AABD8 /* ANMarkovFinder.h */,
+				FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */,
+				FA618B721796EADA008AABD8 /* ANRecursiveFinder.h */,
+				FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */,
+			);
+			path = "Probability Finder";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +244,9 @@
 				FA247B3B1795A1B8008013D5 /* ANCardSet.m in Sources */,
 				FA247B3E1795A827008013D5 /* ANBoard.m in Sources */,
 				FA247B411795E5B3008013D5 /* ANPossibleBoard.m in Sources */,
+				FA618B6B1796E2B7008AABD8 /* ANProbabilityMap.m in Sources */,
+				FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */,
+				FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +361,7 @@
 				FA247B2D17958345008013D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

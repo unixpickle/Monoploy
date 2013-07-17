@@ -33,4 +33,6 @@
 
 - (int)positionByFollowingCard:(ANCard *)card;
 
+- (id)boardByChangingPosition:(int)newPos;
+
 @end

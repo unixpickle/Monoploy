@@ -99,4 +99,12 @@
     return (startPosition + card.whence) % 40;
 }
 
+#pragma mark - Generating New Boards -
+
+- (id)boardByChangingPosition:(int)newPos {
+    return [[self.class alloc] initWithPosition:newPos
+                                         chance:self.chance
+                                 communityChest:self.communityChest];
+}
+
 @end

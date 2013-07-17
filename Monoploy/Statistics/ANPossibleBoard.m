@@ -61,6 +61,15 @@
     return [nodes copy];
 }
 
+#pragma mark - Overloaded -
+
+- (id)boardByChangingPosition:(int)newPos {
+    return [[self.class alloc] initWithChance:self.chance
+                               communityChest:self.communityChest
+                                     position:newPos
+                                  probability:self.probability];
+}
+
 #pragma mark - Private -
 
 - (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(float)prob {
