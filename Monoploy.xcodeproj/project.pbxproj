@@ -16,6 +16,12 @@
 		FA247B2417958345008013D5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2317958345008013D5 /* Default.png */; };
 		FA247B2617958345008013D5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2517958345008013D5 /* Default@2x.png */; };
 		FA247B2817958345008013D5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA247B2717958345008013D5 /* Default-568h@2x.png */; };
+		FA247B3217958421008013D5 /* ANMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3117958421008013D5 /* ANMatrix.m */; };
+		FA247B3417958995008013D5 /* Cards.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA247B3317958995008013D5 /* Cards.plist */; };
+		FA247B3817959C7D008013D5 /* ANCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3717959C7D008013D5 /* ANCard.m */; };
+		FA247B3B1795A1B8008013D5 /* ANCardSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3A1795A1B8008013D5 /* ANCardSet.m */; };
+		FA247B3E1795A827008013D5 /* ANBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B3D1795A827008013D5 /* ANBoard.m */; };
+		FA247B411795E5B3008013D5 /* ANPossibleBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA247B401795E5B3008013D5 /* ANPossibleBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,17 @@
 		FA247B2317958345008013D5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FA247B2517958345008013D5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FA247B2717958345008013D5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FA247B3017958421008013D5 /* ANMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMatrix.h; sourceTree = "<group>"; };
+		FA247B3117958421008013D5 /* ANMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANMatrix.m; sourceTree = "<group>"; };
+		FA247B3317958995008013D5 /* Cards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cards.plist; sourceTree = "<group>"; };
+		FA247B3617959C7D008013D5 /* ANCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCard.h; sourceTree = "<group>"; };
+		FA247B3717959C7D008013D5 /* ANCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCard.m; sourceTree = "<group>"; };
+		FA247B391795A1B8008013D5 /* ANCardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCardSet.h; sourceTree = "<group>"; };
+		FA247B3A1795A1B8008013D5 /* ANCardSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCardSet.m; sourceTree = "<group>"; };
+		FA247B3C1795A827008013D5 /* ANBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANBoard.h; sourceTree = "<group>"; };
+		FA247B3D1795A827008013D5 /* ANBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBoard.m; sourceTree = "<group>"; };
+		FA247B3F1795E5B3008013D5 /* ANPossibleBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPossibleBoard.h; sourceTree = "<group>"; };
+		FA247B401795E5B3008013D5 /* ANPossibleBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPossibleBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,8 @@
 		FA247B0517958345008013D5 = {
 			isa = PBXGroup;
 			children = (
+				FA247B3517959C6A008013D5 /* Game */,
+				FA247B2F179583FA008013D5 /* Statistics */,
 				FA247B1717958345008013D5 /* Monoploy */,
 				FA247B1017958345008013D5 /* Frameworks */,
 				FA247B0F17958345008013D5 /* Products */,
@@ -95,8 +114,35 @@
 				FA247B2317958345008013D5 /* Default.png */,
 				FA247B2517958345008013D5 /* Default@2x.png */,
 				FA247B2717958345008013D5 /* Default-568h@2x.png */,
+				FA247B3317958995008013D5 /* Cards.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA247B2F179583FA008013D5 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B3017958421008013D5 /* ANMatrix.h */,
+				FA247B3117958421008013D5 /* ANMatrix.m */,
+				FA247B3F1795E5B3008013D5 /* ANPossibleBoard.h */,
+				FA247B401795E5B3008013D5 /* ANPossibleBoard.m */,
+			);
+			name = Statistics;
+			path = Monoploy/Statistics;
+			sourceTree = "<group>";
+		};
+		FA247B3517959C6A008013D5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				FA247B3617959C7D008013D5 /* ANCard.h */,
+				FA247B3717959C7D008013D5 /* ANCard.m */,
+				FA247B391795A1B8008013D5 /* ANCardSet.h */,
+				FA247B3A1795A1B8008013D5 /* ANCardSet.m */,
+				FA247B3C1795A827008013D5 /* ANBoard.h */,
+				FA247B3D1795A827008013D5 /* ANBoard.m */,
+			);
+			name = Game;
+			path = Monoploy/Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +201,7 @@
 				FA247B2417958345008013D5 /* Default.png in Resources */,
 				FA247B2617958345008013D5 /* Default@2x.png in Resources */,
 				FA247B2817958345008013D5 /* Default-568h@2x.png in Resources */,
+				FA247B3417958995008013D5 /* Cards.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +214,11 @@
 			files = (
 				FA247B1E17958345008013D5 /* main.m in Sources */,
 				FA247B2217958345008013D5 /* ANAppDelegate.m in Sources */,
+				FA247B3217958421008013D5 /* ANMatrix.m in Sources */,
+				FA247B3817959C7D008013D5 /* ANCard.m in Sources */,
+				FA247B3B1795A1B8008013D5 /* ANCardSet.m in Sources */,
+				FA247B3E1795A827008013D5 /* ANBoard.m in Sources */,
+				FA247B411795E5B3008013D5 /* ANPossibleBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

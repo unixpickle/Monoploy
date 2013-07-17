@@ -7,11 +7,18 @@
 //
 
 #import "ANAppDelegate.h"
+#import "ANCardSet.h"
 
 @implementation ANAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    ANCardSet * community = [ANCardSet defaultCommunityChest];
+    ANCardSet * chance = [ANCardSet defaultChance];
+    NSLog(@"%@, count %d", community, [community.unorderedCards count]);
+    NSLog(@"%@, count %d", chance, [chance.unorderedCards count]);
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Advance to Illinois Ave.</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>24</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>You have been elected chairman of the board: Pay each player $50</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Your building and loan matures: Collect $150</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Take a walk on the board walk: Advance token to board walk</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>39</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Get out of jail, free</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Bank pays you a dividend of $50</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Advance to St. Charles Place</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>11</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Take a ride on the Reading</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>5</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Go directly to jail</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>30</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Advance token to the nearest railroad and pay owner twice the rental to which he is otherwise entitled</string>
+		<key>Whence</key>
+		<string>Railroad</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>2</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Go back 3 spaces</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>-3</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Pay poor tax of $15</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Advance to Go</string>
+		<key>Whence</key>
+		<string>Absolute</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Make general repairs on all your property: For each house pay $25, for each hotel $100</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Advance token to nearest utility</string>
+		<key>Whence</key>
+		<string>Utility</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>1</integer>
+		<key>CC</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>You are assessed for street repairs: Pay $40 per house, $115 per hotel</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>You inherit $100</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>You have won second prize in a beauty contest: Collect $10</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Doctors fee: Pay $50</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Pay hospital $100</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Xmas fund matures: collect $100</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Bank error in your favor: collect $200</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>From sale of stock: you get $45</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Life insurance matures: collect $100</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Grand opera opening: collect $50 from each player</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Receive for services $25</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Income tax refund: collect $20</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Pay school tax of $150</string>
+		<key>Whence</key>
+		<string>Relative</string>
+		<key>Seek</key>
+		<integer>0</integer>
+		<key>Chance</key>
+		<integer>0</integer>
+		<key>CC</key>
+		<integer>1</integer>
+	</dict>
+</array>
+</plist>
