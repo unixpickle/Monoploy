@@ -25,6 +25,7 @@
 		FA618B6B1796E2B7008AABD8 /* ANProbabilityMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */; };
 		FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */; };
 		FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */; };
+		FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B771796ED9D008AABD8 /* ANPreferences.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANMarkovFinder.m; sourceTree = "<group>"; };
 		FA618B721796EADA008AABD8 /* ANRecursiveFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRecursiveFinder.h; sourceTree = "<group>"; };
 		FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRecursiveFinder.m; sourceTree = "<group>"; };
+		FA618B761796ED9D008AABD8 /* ANPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPreferences.h; sourceTree = "<group>"; };
+		FA618B771796ED9D008AABD8 /* ANPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 		FA247B0517958345008013D5 = {
 			isa = PBXGroup;
 			children = (
+				FA618B751796ED94008AABD8 /* Settings */,
 				FA247B3517959C6A008013D5 /* Game */,
 				FA247B2F179583FA008013D5 /* Statistics */,
 				FA247B1717958345008013D5 /* Monoploy */,
@@ -170,6 +174,16 @@
 			path = "Probability Finder";
 			sourceTree = "<group>";
 		};
+		FA618B751796ED94008AABD8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FA618B761796ED9D008AABD8 /* ANPreferences.h */,
+				FA618B771796ED9D008AABD8 /* ANPreferences.m */,
+			);
+			name = Settings;
+			path = Monoploy/Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,6 +261,7 @@
 				FA618B6B1796E2B7008AABD8 /* ANProbabilityMap.m in Sources */,
 				FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */,
 				FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */,
+				FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

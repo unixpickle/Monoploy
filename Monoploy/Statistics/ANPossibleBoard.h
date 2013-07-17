@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ANBoard.h"
 #import "ANMatrix.h"
+#import "ANPreferences.h"
 
 @interface ANPossibleBoard : ANBoard {
     float probability;

@@ -48,6 +48,16 @@
             int roll = x1 + x2;
             float subProb = self.probability * 1.0/36.0;
             int newLoc = [self positionByAdvancing:roll];
+            
+            // if we are in jail, there's an extra parameter to consider
+            if (position == 30) {
+                if ([[ANPreferences sharedPreferences] jailOnlyDoubles]) {
+                    if (x1 != x2) {
+                        newLoc = position;
+                    }
+                }
+            }
+            
             ANPossibleBoard * board = [[ANPossibleBoard alloc] initWithOldBoard:self
                                                                        position:newLoc
                                                                     probability:subProb];
