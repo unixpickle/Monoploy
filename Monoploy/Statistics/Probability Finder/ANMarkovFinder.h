@@ -19,5 +19,6 @@
 
 - (id)initWithMatrix:(ANMatrix *)matrix initial:(ANMatrix *)state
               markov:(ANMatrix *)base;
+- (ANProbabilityMap *)steadyStateMap;
 
 @end

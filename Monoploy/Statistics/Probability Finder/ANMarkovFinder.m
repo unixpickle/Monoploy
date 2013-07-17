@@ -65,4 +65,16 @@
     return [[ANProbabilityMap alloc] initWithValues:values];
 }
 
+- (ANProbabilityMap *)steadyStateMap {
+    ANMatrix * identity = [ANMatrix identityMatrix:40];
+    ANMatrix * difference = [self add:[identity scale:-1]];
+    ANMatrix * nullspace = [difference nullspaceBasis];
+    NSAssert(nullspace.rowCount == 40 && nullspace.columnCount == 1, @"Invalid nullspace");
+    float values[40];
+    for (int i = 0; i < 40; i++) {
+        values[i] = [nullspace itemAtRow:i column:0];
+    }
+    return [[[ANProbabilityMap alloc] initWithValues:values] mapByScalingToUnit];
+}
+
 @end

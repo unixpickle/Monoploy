@@ -26,6 +26,7 @@
 		FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */; };
 		FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */; };
 		FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B771796ED9D008AABD8 /* ANPreferences.m */; };
+		FA618B7B1796F2A4008AABD8 /* ANStatisticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRecursiveFinder.m; sourceTree = "<group>"; };
 		FA618B761796ED9D008AABD8 /* ANPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPreferences.h; sourceTree = "<group>"; };
 		FA618B771796ED9D008AABD8 /* ANPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPreferences.m; sourceTree = "<group>"; };
+		FA618B791796F2A4008AABD8 /* ANStatisticsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANStatisticsGenerator.h; sourceTree = "<group>"; };
+		FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANStatisticsGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				FA247B401795E5B3008013D5 /* ANPossibleBoard.m */,
 				FA618B691796E2B7008AABD8 /* ANProbabilityMap.h */,
 				FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */,
+				FA618B791796F2A4008AABD8 /* ANStatisticsGenerator.h */,
+				FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */,
 			);
 			name = Statistics;
 			path = Monoploy/Statistics;
@@ -262,6 +267,7 @@
 				FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */,
 				FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */,
 				FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */,
+				FA618B7B1796F2A4008AABD8 /* ANStatisticsGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
