@@ -44,4 +44,15 @@
     return [[ANRecursiveFinder alloc] initWithPossibilities:[expansion copy]];
 }
 
+- (id)finderForNextTurnExcluding:(int)space {
+    NSMutableSet * expansion = [[NSMutableSet alloc] init];
+    for (ANPossibleBoard * board in possibilities) {
+        if (board.position == space) continue;
+        for (id obj in [board expand]) {
+            [expansion addObject:obj];
+        }
+    }
+    return [[ANRecursiveFinder alloc] initWithPossibilities:[expansion copy]];
+}
+
 @end

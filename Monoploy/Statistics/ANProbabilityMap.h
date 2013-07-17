@@ -29,4 +29,7 @@
  */
 - (ANProbabilityMap *)mapByScalingToUnit;
 
+- (float)sumValues;
+- (float)sumValuesExcluding:(int)index;
+
 @end

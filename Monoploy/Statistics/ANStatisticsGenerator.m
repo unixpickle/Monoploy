@@ -14,6 +14,7 @@
 
 - (void)findSteadyState;
 - (void)findFiniteState;
+- (void)findCompoundedFiniteState;
 
 - (void)notifyDelegate;
 
@@ -60,7 +61,12 @@
         if (depthCount < 0) {
             [self findSteadyState];
         } else {
-            [self findFiniteState];
+            BOOL compound = [[ANPreferences sharedPreferences] compoundTurns];
+            if (compound) {
+                [self findCompoundedFiniteState];
+            } else {
+                [self findFiniteState];
+            }
         }
         if ([[NSThread currentThread] isCancelled]) {
             return;
@@ -75,24 +81,36 @@
 }
 
 - (void)findFiniteState {
-    BOOL compound = [[ANPreferences sharedPreferences] compoundTurns];
     id<ANProbabilityFinder> theFinder = finder;
+    
     for (int i = 0; i < depthCount; i++) {
-        if (compound) {
-            ANProbabilityMap * map = [theFinder probabilityMap];
-            if (!result) result = map;
-            else result = [result mapByAdding:map];
-        } else if (i + 1 == depthCount) {
+        if (i + 1 == depthCount) {
             result = [theFinder probabilityMap];
+            break;
         }
         
-        if (i + 1 == depthCount) break;
         if ([[NSThread currentThread] isCancelled]) return;
         theFinder = [theFinder finderForNextTurn];
     }
-    if (compound) {
-        result = [result mapByScalingToUnit];
+}
+
+- (void)findCompoundedFiniteState {
+    id<ANProbabilityFinder> theFinder = finder;
+    
+    float values[40];
+    for (int space = 0; space < 40; space++) {
+        for (int i = 0; i < depthCount; i++) {
+            if (i + 1 == depthCount) {
+                ANProbabilityMap * map = [theFinder probabilityMap];
+                values[space] = 1 - [map sumValuesExcluding:space];
+                break;
+            }
+            
+            if ([[NSThread currentThread] isCancelled]) return;
+            theFinder = [theFinder finderForNextTurnExcluding:space];
+        }
     }
+    result = [[ANProbabilityMap alloc] initWithValues:values];
 }
 
 - (void)notifyDelegate {

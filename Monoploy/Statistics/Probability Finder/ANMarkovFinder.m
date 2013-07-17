@@ -10,8 +10,7 @@
 
 @implementation ANMarkovFinder
 
-- (id)initWithMatrix:(ANMatrix *)matrix initial:(ANMatrix *)state
-              markov:(ANMatrix *)base {
+- (id)initWithMatrix:(ANMatrix *)matrix initial:(ANMatrix *)state {
     if ((self = [super initWithRows:matrix.rowCount columns:matrix.columnCount])) {
         for (int i = 0; i < matrix.rowCount; i++) {
             for (int j = 0; j < matrix.columnCount; j++) {
@@ -19,7 +18,6 @@
                 [self setItem:item atRow:i column:j];
             }
         }
-        initialMarkov = base;
         initialState = state;
     }
     return self;
@@ -48,12 +46,12 @@
     return self;
 }
 
+#pragma mark - Non-compounding -
+
 - (id)finderForNextTurn {
-    ANMatrix * nextTurn = [self multiply:initialMarkov];
-    ANMatrix * markov = (initialMarkov ? initialMarkov : self);
-    return [[ANMarkovFinder alloc] initWithMatrix:nextTurn
-                                          initial:initialState
-                                           markov:markov];
+    ANMatrix * nextState = [self multiply:initialState];
+    return [[ANMarkovFinder alloc] initWithMatrix:self
+                                          initial:nextState];
 }
 
 - (ANProbabilityMap *)probabilityMap {
@@ -64,6 +62,17 @@
     }
     return [[ANProbabilityMap alloc] initWithValues:values];
 }
+
+#pragma mark - Compounding -
+
+- (id)finderForNextTurnExcluding:(int)space {
+    ANMatrix * nextState = [self multiply:initialState];
+    [nextState setItem:0 atRow:space column:0];
+    return [[ANMarkovFinder alloc] initWithMatrix:self
+                                          initial:nextState];
+}
+
+#pragma mark - Markov Specific -
 
 - (ANProbabilityMap *)steadyStateMap {
     ANMatrix * identity = [ANMatrix identityMatrix:40];

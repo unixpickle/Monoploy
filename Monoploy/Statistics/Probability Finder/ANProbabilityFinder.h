@@ -13,7 +13,12 @@
 @protocol ANProbabilityFinder <NSObject>
 
 - (id)initWithPossibleBoard:(ANPossibleBoard *)board;
+
+// non-compounding methods
 - (id)finderForNextTurn;
 - (ANProbabilityMap *)probabilityMap;
+
+// compounding methods
+- (id)finderForNextTurnExcluding:(int)space;
 
 @end

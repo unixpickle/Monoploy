@@ -14,11 +14,9 @@
  */
 @interface ANMarkovFinder : ANMatrix <ANProbabilityFinder> {
     ANMatrix * initialState;
-    ANMatrix * initialMarkov;
 }
 
-- (id)initWithMatrix:(ANMatrix *)matrix initial:(ANMatrix *)state
-              markov:(ANMatrix *)base;
+- (id)initWithMatrix:(ANMatrix *)matrix initial:(ANMatrix *)state;
 - (ANProbabilityMap *)steadyStateMap;
 
 @end

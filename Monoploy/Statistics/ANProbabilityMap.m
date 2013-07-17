@@ -47,4 +47,16 @@
     return [[ANProbabilityMap alloc] initWithValues:newValues];
 }
 
+- (float)sumValues {
+    return [self sumValuesExcluding:-1];
+}
+
+- (float)sumValuesExcluding:(int)index {
+    float sum = 0;
+    for (int i = 0; i < 40; i++) {
+        sum += values[index];
+    }
+    return sum;
+}
+
 @end
