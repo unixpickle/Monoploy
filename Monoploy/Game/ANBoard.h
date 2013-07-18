@@ -9,18 +9,31 @@
 #import <Foundation/Foundation.h>
 #import "ANCardSet.h"
 
-@interface ANBoard : NSObject {
+typedef struct {
     int position;
+    union {
+        int jailRolls;
+        int doubleRolls;
+    };
+} ANBoardState;
+
+ANBoardState ANBoardStateCreate(int pos, int rollCount);
+
+@interface ANBoard : NSObject {
+    ANBoardState attributes;
     ANCardSet * chance;
     ANCardSet * communityChest;
 }
 
+@property (readonly) ANBoardState attributes;
 @property (readonly) int position;
+@property (readonly) int jailRolls;
+@property (readonly) int doubleRolls;
 @property (readonly) ANCardSet * chance;
 @property (readonly) ANCardSet * communityChest;
 
-- (id)initWithPosition:(int)pos chance:(ANCardSet *)theChance
-        communityChest:(ANCardSet *)theCommunityChest;
+- (id)initWithState:(ANBoardState)state chance:(ANCardSet *)theChance
+     communityChest:(ANCardSet *)theCommunityChest;
 
 - (int)closestRailroad;
 - (int)closestUtility;
@@ -34,5 +47,6 @@
 - (int)positionByFollowingCard:(ANCard *)card;
 
 - (id)boardByChangingPosition:(int)newPos;
+- (id)boardByChangingJailRolls:(int)newRolls;
 
 @end

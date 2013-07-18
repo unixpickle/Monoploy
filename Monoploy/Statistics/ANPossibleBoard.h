@@ -13,7 +13,6 @@
 
 @interface ANPossibleBoard : ANBoard {
     double probability;
-    int jailRolls;
 }
 
 @property (readonly) double probability;

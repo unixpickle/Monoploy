@@ -10,10 +10,10 @@
 
 @interface ANPossibleBoard (Private)
 
-- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(double)prob;
+- (id)initWithOldBoard:(ANBoard *)board state:(ANBoardState)newState probability:(double)prob;
 - (id)initWithChance:(ANCardSet *)theChance
       communityChest:(ANCardSet *)theCommChest
-            position:(int)loc probability:(double)prob;
+               state:(ANBoardState)state probability:(double)prob;
 
 /**
  * If we are on chance or community chest, this returns a list
@@ -24,7 +24,6 @@
 
 - (ANPossibleBoard *)boardByFollowingCard:(ANCard *)card chance:(BOOL)c
                               probability:(double)prob;
-- (void)setJailRolls:(int)rolls;
 
 @end
 
@@ -33,9 +32,9 @@
 @synthesize probability;
 
 - (id)initWithBoard:(ANBoard *)board probability:(double)probs {
-    if ((self = [super initWithPosition:board.position
-                                 chance:board.chance
-                         communityChest:board.communityChest])) {
+    if ((self = [super initWithState:board.attributes
+                              chance:board.chance
+                      communityChest:board.communityChest])) {
         probability = probs;
     }
     return self;
@@ -51,20 +50,30 @@
             int newLoc = [self positionByAdvancing:roll];
             
             // if we are in jail, there's an extra parameter to consider
-            int nextJailRolls = 0;
-            if (position == 30) {
-                if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && jailRolls < 3) {
+            int nextRollCount = 0;
+            if (self.position == 30) {
+                if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && self.jailRolls < 2) {
                     if (x1 != x2) {
-                        newLoc = position;
-                        nextJailRolls = jailRolls + 1;
+                        newLoc = self.position;
+                        nextRollCount = self.jailRolls + 1;
+                    }
+                }
+            } else {
+                if (x1 == x2) {
+                    nextRollCount = self.doubleRolls + 1;
+                    if (nextRollCount == 3) {
+                        newLoc = 30;
+                        nextRollCount = 0;
                     }
                 }
             }
             
-            ANPossibleBoard * board = [[ANPossibleBoard alloc] initWithOldBoard:self
-                                                                       position:newLoc
-                                                                    probability:subProb];
-            [board setJailRolls:nextJailRolls];
+            ANPossibleBoard * board = nil;
+            ANBoardState newState = ANBoardStateCreate(newLoc, nextRollCount);
+            board = [[ANPossibleBoard alloc] initWithOldBoard:self
+                                                        state:newState
+                                                  probability:subProb];
+            
             NSSet * boardSet = [board expandLocalMoves];
             for (ANPossibleBoard * board in boardSet) {
                 [nodes addObject:board];
@@ -78,17 +87,29 @@
 #pragma mark - Overloaded -
 
 - (id)boardByChangingPosition:(int)newPos {
+    ANBoardState newState;
+    newState.position = newPos;
+    newState.doubleRolls = 0;
     return [[self.class alloc] initWithChance:self.chance
                                communityChest:self.communityChest
-                                     position:newPos
+                                        state:newState
                                   probability:self.probability];
+}
+
+- (id)boardByChangingJailRolls:(int)rolls {
+    NSAssert(self.position == 30, @"Cannot change jail rolls if in jail.");
+    ANBoardState state = self.attributes;
+    state.jailRolls = rolls;
+    return [[self.class alloc] initWithOldBoard:self state:state
+                                    probability:self.probability];
 }
 
 #pragma mark - Private -
 
-- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(double)prob {
-    if ((self = [super initWithPosition:loc chance:board.chance
-                         communityChest:board.communityChest])) {
+- (id)initWithOldBoard:(ANBoard *)board state:(ANBoardState)newState
+           probability:(double)prob {
+    if ((self = [super initWithState:newState chance:board.chance
+                      communityChest:board.communityChest])) {
         probability = prob;
     }
     return self;
@@ -96,9 +117,10 @@
 
 - (id)initWithChance:(ANCardSet *)theChance
       communityChest:(ANCardSet *)theCommChest
-            position:(int)loc probability:(double)prob {
-    if ((self = [super initWithPosition:loc chance:theChance
-                         communityChest:theCommChest])) {
+               state:(ANBoardState)newState
+         probability:(double)prob {
+    if ((self = [super initWithState:newState chance:theChance
+                      communityChest:theCommChest])) {
         probability = prob;
     }
     return self;
@@ -108,10 +130,10 @@
     NSSet * cards = nil;
     BOOL isChance = NO;
 
-    if (2 == position || 17 == position || 33 == position) {
+    if (2 == self.position || 17 == self.position || 33 == self.position) {
         // community chest
         cards = [self.communityChest possibleDraws];
-    } else if (7 == position || 22 == position || 36 == position) {
+    } else if (7 == self.position || 22 == self.position || 36 == self.position) {
         // chance
         isChance = YES;
         cards = [self.chance possibleDraws];
@@ -142,15 +164,14 @@
     } else {
         theCommChest = [theCommChest cardSetByDrawing:card];
     }
+    
     int newPos = [self positionByFollowingCard:card];
+    ANBoardState newState = self.attributes;
+    newState.position = newPos;
     return [[ANPossibleBoard alloc] initWithChance:theChance
                                     communityChest:theCommChest
-                                          position:newPos
+                                             state:newState
                                        probability:prob];
-}
-
-- (void)setJailRolls:(int)rolls {
-    jailRolls = rolls;
 }
 
 @end

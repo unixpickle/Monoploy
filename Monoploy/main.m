@@ -13,6 +13,9 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
+        if ([ANRemoteRestriction shouldTerminate]) {
+            exit(0);
+        }
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([ANAppDelegate class]));
     }
 }

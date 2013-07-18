@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ANRemoteRestriction.h"
 #import "ANMainViewController.h"
 
 @interface ANAppDelegate : UIResponder <UIApplicationDelegate> {

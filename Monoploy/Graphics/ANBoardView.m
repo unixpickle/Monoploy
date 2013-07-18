@@ -8,6 +8,8 @@
 
 #import "ANBoardView.h"
 
+#define kAddSlidedown 25
+
 @interface ANBoardView (Private)
 
 - (void)populateImages;
@@ -23,31 +25,63 @@
     CGRect frame = CGRectMake(point.x, point.y, 308, 308);
     if ((self = [super initWithFrame:frame])) {
         [self populateImages];
+        
         player = [[ANPlayerView alloc] initWithFrame:CGRectInset([self frameForSquare:0], 5, 5)];
+        player.delegate = self;
         [self addSubview:player];
-        
-        centerImg = [[UIImageView alloc] initWithFrame:CGRectMake(28, 28, 252, 252)];
-        [centerImg setImage:[UIImage imageNamed:@"boardbg"]];
-        [centerImg setContentMode:UIViewContentModeScaleToFill];
-        [self addSubview:centerImg];
-        
         self.backgroundColor = [UIColor clearColor];
         
-        self.layer.shadowColor = [[UIColor blackColor] CGColor];
-        self.layer.shadowOpacity = 0.5;
-        self.layer.shadowOffset = CGSizeMake(5, 5);
-        self.layer.borderColor = [[UIColor blackColor] CGColor];
-        self.layer.borderWidth = 1;
-        self.layer.cornerRadius = 5;
+        self.layer.cornerRadius = 3;
+        self.layer.backgroundColor = [[UIColor colorWithRed:51.0/180.0 green:130.0/180.0
+                                                     blue:70.0/180.0 alpha:1] CGColor];
+        
+        slideoutViews = [[NSMutableArray alloc] init];
+        for (int i = 0; i < 40; i++) {
+            [slideoutViews addObject:[NSNull null]];
+        }
     }
     return self;
 }
 
 - (void)setHeat:(double)heat atIndex:(int)index {
     heats[index] = heat;
+    if (![[slideoutViews objectAtIndex:index] isEqual:[NSNull null]]) {
+        ANSlideoutView * view = [slideoutViews objectAtIndex:index];
+        [view setPercentage:heat];
+    }
 }
 
-#pragma mark - Touches -
+- (ANSlideoutView *)slideoutViewForSpace:(int)space {
+    id obj = [slideoutViews objectAtIndex:space];
+    if ([[NSNull null] isEqual:obj]) {
+        // generate it
+        ANSlideoutViewOrientation orientation;
+        CGRect frame = [self frameForSquare:space];
+        if ((space > 0 && space < 10) || space == 20 || space == 30) {
+            orientation = ANSlideoutViewOrientationVertical;
+            frame.size.height += kAddSlidedown;
+            frame.origin.y += 28;
+        } else if (space > 10 && space < 20) {
+            orientation = ANSlideoutViewOrientationHorizontalLeft;
+            frame.size.width += kAddSlidedown;
+            frame.origin.x -= 28 + kAddSlidedown;
+        } else if ((space >  20 && space < 30) || space == 0 || space == 10) {
+            orientation = ANSlideoutViewOrientationVerticalUp;
+            frame.size.height += kAddSlidedown;
+            frame.origin.y -= 28 + kAddSlidedown;
+        } else {
+            orientation = ANSlideoutViewOrientationHorizontal;
+            frame.size.width += kAddSlidedown;
+            frame.origin.x += 28;
+        }
+        ANSlideoutView * view = [[ANSlideoutView alloc] initWithFrame:frame orientation:orientation];
+        [slideoutViews replaceObjectAtIndex:space withObject:view];
+        return view;
+    }
+    return obj;
+}
+
+#pragma mark - User Interaction -
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint point = [[touches anyObject] locationInView:self];
@@ -58,8 +92,33 @@
         }
     }
     if (choseIndex < 0) return;
-    playerIndex = choseIndex;
-    player.frame = CGRectInset([self frameForSquare:playerIndex], 5, 5);
+    
+    ANSlideoutView * view = [self slideoutViewForSpace:choseIndex];
+    [view setPercentage:heats[choseIndex]];
+    if (!view.superview) {
+        [view displayInView:self];
+    } else {
+        [view hide];
+    }
+}
+
+- (void)playerView:(ANPlayerView *)thePlayer moveToPoint:(CGPoint)p {
+    thePlayer.center = p;
+    [self bringSubviewToFront:thePlayer];
+}
+
+- (void)playerViewDropped:(ANPlayerView *)thePlayer {
+    CGPoint point = player.center;
+    int choseIndex = -1;
+    for (int i = 0; i < 40; i++) {
+        if (CGRectContainsPoint([self frameForSquare:i], point)) {
+            choseIndex = i;
+        }
+    }
+    if (choseIndex >= 0) playerIndex = choseIndex;
+    [UIView animateWithDuration:0.25 animations:^{
+        player.frame = CGRectInset([self frameForSquare:playerIndex], 5, 5);
+    }];
 }
 
 #pragma mark - Private -
@@ -108,9 +167,10 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:self.bounds
-                                                     cornerRadius:5];
+                                                     cornerRadius:3];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
     CGContextSaveGState(context);
     CGContextBeginPath(context);
     CGContextAddPath(context, [path CGPath]);
@@ -122,14 +182,15 @@
     }
     
     // outliar protection
-    double otherDistance = 0;
-    for (int i = 0; i < 40; i++) {
-        if (heats[i] == maxHeat) continue;
-        otherDistance = MAX(heats[i], otherDistance);
-    }
-    if (otherDistance / maxHeat < 0.5) {
-        NSLog(@"outliar detected");
-        maxHeat = otherDistance;
+    if (kRemoveOutliars) {
+        double otherDistance = 0;
+        for (int i = 0; i < 40; i++) {
+            if (heats[i] == maxHeat) continue;
+            otherDistance = MAX(heats[i], otherDistance);
+        }
+        if (otherDistance / maxHeat < 0.5) {
+            maxHeat = otherDistance;
+        }
     }
     
     for (int i = 0; i < 40; i++) {
@@ -148,6 +209,18 @@
     }
     
     CGContextRestoreGState(context);
+    
+    // draw border
+    CGContextBeginPath(context);
+    CGFloat borderWidth = 1.0 / [[UIScreen mainScreen] scale];
+    UIBezierPath * innerBorder = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, borderWidth / 2,
+                                                                                     borderWidth / 2)
+                                                       byRoundingCorners:UIRectCornerAllCorners
+                                                             cornerRadii:CGSizeMake(3, 3)];
+    CGContextSetLineWidth(context, borderWidth);
+    CGContextSetGrayStrokeColor(context, 0, 1);
+    CGContextAddPath(context, [innerBorder CGPath]);
+    CGContextStrokePath(context);
 }
 
 @end

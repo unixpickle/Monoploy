@@ -10,6 +10,7 @@
 #import "ANBoardView.h"
 #import "ANLoadingView.h"
 #import "ANStatisticsGenerator.h"
+#import "ANPreferencesViewController.h"
 
 @interface ANMainViewController : UIViewController <ANStatisticsGenerator> {
     ANBoardView * boardView;
