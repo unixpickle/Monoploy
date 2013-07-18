@@ -49,9 +49,9 @@
             double subProb = self.probability * 1.0/36.0;
             int newLoc = [self positionByAdvancing:roll];
             
-            // if we are in jail, there's an extra parameter to consider
             int nextRollCount = 0;
             if (self.position == 30) {
+                // in jail, we can either escape or move up one
                 if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && self.jailRolls < 2) {
                     if (x1 != x2) {
                         newLoc = self.position;
@@ -59,7 +59,9 @@
                     }
                 }
             } else {
-                if (x1 == x2) {
+                if (newLoc == 30) {
+                    nextRollCount = 0;
+                } else if (x1 == x2) {
                     nextRollCount = self.doubleRolls + 1;
                     if (nextRollCount == 3) {
                         newLoc = 30;
@@ -168,6 +170,9 @@
     int newPos = [self positionByFollowingCard:card];
     ANBoardState newState = self.attributes;
     newState.position = newPos;
+    if (newPos == 30) {
+        newState.jailRolls = 0;
+    }
     return [[ANPossibleBoard alloc] initWithChance:theChance
                                     communityChest:theCommChest
                                              state:newState
