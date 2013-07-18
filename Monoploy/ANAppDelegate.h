@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ANMainViewController.h"
 
-@interface ANAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ANAppDelegate : UIResponder <UIApplicationDelegate> {
+    UINavigationController * navController;
+}
 
 @property (strong, nonatomic) UIWindow * window;
 

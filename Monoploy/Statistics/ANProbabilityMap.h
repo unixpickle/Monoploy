@@ -13,11 +13,11 @@
  * probability vector.
  */
 @interface ANProbabilityMap : NSObject {
-    float values[40];
+    double values[40];
 }
 
-- (id)initWithValues:(float *)values;
-- (float)probabilityForSpace:(int)space;
+- (id)initWithValues:(double *)values;
+- (double)probabilityForSpace:(int)space;
 
 /**
  * Adds vector anotherMap to self.
@@ -29,7 +29,7 @@
  */
 - (ANProbabilityMap *)mapByScalingToUnit;
 
-- (float)sumValues;
-- (float)sumValuesExcluding:(int)index;
+- (double)sumValues;
+- (double)sumValuesExcluding:(int)index;
 
 @end

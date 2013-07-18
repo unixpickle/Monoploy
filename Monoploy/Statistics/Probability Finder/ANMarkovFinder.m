@@ -14,7 +14,7 @@
     if ((self = [super initWithRows:matrix.rowCount columns:matrix.columnCount])) {
         for (int i = 0; i < matrix.rowCount; i++) {
             for (int j = 0; j < matrix.columnCount; j++) {
-                float item = [matrix itemAtRow:i column:j];
+                double item = [matrix itemAtRow:i column:j];
                 [self setItem:item atRow:i column:j];
             }
         }
@@ -33,7 +33,7 @@
             // compute the total probability of each location
             for (ANPossibleBoard * board in outcomes) {
                 int position = board.position;
-                float currentValue = [self itemAtRow:position column:source];
+                double currentValue = [self itemAtRow:position column:source];
                 currentValue += board.probability;
                 [self setItem:currentValue atRow:position column:source];
             }
@@ -55,7 +55,7 @@
 }
 
 - (ANProbabilityMap *)probabilityMap {
-    float values[40];
+    double values[40];
     ANMatrix * result = [self multiply:initialState];
     for (int i = 0; i < 40; i++) {
         values[i] = [result itemAtRow:i column:0];
@@ -79,7 +79,7 @@
     ANMatrix * difference = [self add:[identity scale:-1]];
     ANMatrix * nullspace = [difference nullspaceBasis];
     NSAssert(nullspace.rowCount == 40 && nullspace.columnCount == 1, @"Invalid nullspace");
-    float values[40];
+    double values[40];
     for (int i = 0; i < 40; i++) {
         values[i] = [nullspace itemAtRow:i column:0];
     }

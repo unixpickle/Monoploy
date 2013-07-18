@@ -12,12 +12,13 @@
 #import "ANPreferences.h"
 
 @interface ANPossibleBoard : ANBoard {
-    float probability;
+    double probability;
+    int jailRolls;
 }
 
-@property (readonly) float probability;
+@property (readonly) double probability;
 
-- (id)initWithBoard:(ANBoard *)board probability:(float)probs;
+- (id)initWithBoard:(ANBoard *)board probability:(double)probs;
 - (NSSet *)expand;
 
 @end

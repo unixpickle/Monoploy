@@ -95,10 +95,9 @@
 }
 
 - (void)findCompoundedFiniteState {
-    id<ANProbabilityFinder> theFinder = finder;
-    
-    float values[40];
+    double values[40];
     for (int space = 0; space < 40; space++) {
+        id<ANProbabilityFinder> theFinder = finder;
         for (int i = 0; i < depthCount; i++) {
             if (i + 1 == depthCount) {
                 ANProbabilityMap * map = [theFinder probabilityMap];

@@ -27,6 +27,20 @@
 		FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */; };
 		FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B771796ED9D008AABD8 /* ANPreferences.m */; };
 		FA618B7B1796F2A4008AABD8 /* ANStatisticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */; };
+		FA618B7F179702EA008AABD8 /* ANBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B7E179702EA008AABD8 /* ANBoardView.m */; };
+		FA618B8417970701008AABD8 /* chance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B8017970701008AABD8 /* chance@2x.png */; };
+		FA618B8517970701008AABD8 /* railroad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B8117970701008AABD8 /* railroad@2x.png */; };
+		FA618B8617970701008AABD8 /* chest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B8217970701008AABD8 /* chest@2x.png */; };
+		FA618B8717970701008AABD8 /* go@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B8317970701008AABD8 /* go@2x.png */; };
+		FA618B8A17975B0A008AABD8 /* ANPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B8917975B0A008AABD8 /* ANPlayerView.m */; };
+		FA618B8D17975BE2008AABD8 /* ANMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B8C17975BE2008AABD8 /* ANMainViewController.m */; };
+		FA618B8F17975F9D008AABD8 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B8E17975F9D008AABD8 /* background@2x.png */; };
+		FA618B91179760CE008AABD8 /* boardbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B90179760CE008AABD8 /* boardbg@2x.png */; };
+		FA618B9317976128008AABD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA618B9217976128008AABD8 /* QuartzCore.framework */; };
+		FA618B9517976537008AABD8 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B9417976537008AABD8 /* settings@2x.png */; };
+		FA618B98179768AF008AABD8 /* chest_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B96179768AF008AABD8 /* chest_btn@2x.png */; };
+		FA618B99179768AF008AABD8 /* chance_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B97179768AF008AABD8 /* chance_btn@2x.png */; };
+		FA618B9C1797710D008AABD8 /* ANLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B9B1797710D008AABD8 /* ANLoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +79,24 @@
 		FA618B771796ED9D008AABD8 /* ANPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPreferences.m; sourceTree = "<group>"; };
 		FA618B791796F2A4008AABD8 /* ANStatisticsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANStatisticsGenerator.h; sourceTree = "<group>"; };
 		FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANStatisticsGenerator.m; sourceTree = "<group>"; };
+		FA618B7D179702EA008AABD8 /* ANBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANBoardView.h; sourceTree = "<group>"; };
+		FA618B7E179702EA008AABD8 /* ANBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBoardView.m; sourceTree = "<group>"; };
+		FA618B8017970701008AABD8 /* chance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chance@2x.png"; sourceTree = "<group>"; };
+		FA618B8117970701008AABD8 /* railroad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "railroad@2x.png"; sourceTree = "<group>"; };
+		FA618B8217970701008AABD8 /* chest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chest@2x.png"; sourceTree = "<group>"; };
+		FA618B8317970701008AABD8 /* go@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go@2x.png"; sourceTree = "<group>"; };
+		FA618B8817975B0A008AABD8 /* ANPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPlayerView.h; sourceTree = "<group>"; };
+		FA618B8917975B0A008AABD8 /* ANPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPlayerView.m; sourceTree = "<group>"; };
+		FA618B8B17975BE2008AABD8 /* ANMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANMainViewController.h; sourceTree = "<group>"; };
+		FA618B8C17975BE2008AABD8 /* ANMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANMainViewController.m; sourceTree = "<group>"; };
+		FA618B8E17975F9D008AABD8 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		FA618B90179760CE008AABD8 /* boardbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boardbg@2x.png"; sourceTree = "<group>"; };
+		FA618B9217976128008AABD8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA618B9417976537008AABD8 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		FA618B96179768AF008AABD8 /* chest_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chest_btn@2x.png"; sourceTree = "<group>"; };
+		FA618B97179768AF008AABD8 /* chance_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chance_btn@2x.png"; sourceTree = "<group>"; };
+		FA618B9A1797710D008AABD8 /* ANLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANLoadingView.h; sourceTree = "<group>"; };
+		FA618B9B1797710D008AABD8 /* ANLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANLoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA618B9317976128008AABD8 /* QuartzCore.framework in Frameworks */,
 				FA247B1217958345008013D5 /* UIKit.framework in Frameworks */,
 				FA247B1417958345008013D5 /* Foundation.framework in Frameworks */,
 				FA247B1617958345008013D5 /* CoreGraphics.framework in Frameworks */,
@@ -84,9 +117,6 @@
 		FA247B0517958345008013D5 = {
 			isa = PBXGroup;
 			children = (
-				FA618B751796ED94008AABD8 /* Settings */,
-				FA247B3517959C6A008013D5 /* Game */,
-				FA247B2F179583FA008013D5 /* Statistics */,
 				FA247B1717958345008013D5 /* Monoploy */,
 				FA247B1017958345008013D5 /* Frameworks */,
 				FA247B0F17958345008013D5 /* Products */,
@@ -104,6 +134,7 @@
 		FA247B1017958345008013D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA618B9217976128008AABD8 /* QuartzCore.framework */,
 				FA247B1117958345008013D5 /* UIKit.framework */,
 				FA247B1317958345008013D5 /* Foundation.framework */,
 				FA247B1517958345008013D5 /* CoreGraphics.framework */,
@@ -114,8 +145,14 @@
 		FA247B1717958345008013D5 /* Monoploy */ = {
 			isa = PBXGroup;
 			children = (
+				FA618B7C179702DF008AABD8 /* Graphics */,
+				FA618B751796ED94008AABD8 /* Settings */,
+				FA247B3517959C6A008013D5 /* Game */,
+				FA247B2F179583FA008013D5 /* Statistics */,
 				FA247B2017958345008013D5 /* ANAppDelegate.h */,
 				FA247B2117958345008013D5 /* ANAppDelegate.m */,
+				FA618B8B17975BE2008AABD8 /* ANMainViewController.h */,
+				FA618B8C17975BE2008AABD8 /* ANMainViewController.m */,
 				FA247B1817958345008013D5 /* Supporting Files */,
 			);
 			path = Monoploy;
@@ -124,6 +161,15 @@
 		FA247B1817958345008013D5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA618B96179768AF008AABD8 /* chest_btn@2x.png */,
+				FA618B97179768AF008AABD8 /* chance_btn@2x.png */,
+				FA618B9417976537008AABD8 /* settings@2x.png */,
+				FA618B90179760CE008AABD8 /* boardbg@2x.png */,
+				FA618B8E17975F9D008AABD8 /* background@2x.png */,
+				FA618B8017970701008AABD8 /* chance@2x.png */,
+				FA618B8117970701008AABD8 /* railroad@2x.png */,
+				FA618B8217970701008AABD8 /* chest@2x.png */,
+				FA618B8317970701008AABD8 /* go@2x.png */,
 				FA247B1917958345008013D5 /* Monoploy-Info.plist */,
 				FA247B1A17958345008013D5 /* InfoPlist.strings */,
 				FA247B1D17958345008013D5 /* main.m */,
@@ -149,8 +195,7 @@
 				FA618B791796F2A4008AABD8 /* ANStatisticsGenerator.h */,
 				FA618B7A1796F2A4008AABD8 /* ANStatisticsGenerator.m */,
 			);
-			name = Statistics;
-			path = Monoploy/Statistics;
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		FA247B3517959C6A008013D5 /* Game */ = {
@@ -163,8 +208,7 @@
 				FA247B3C1795A827008013D5 /* ANBoard.h */,
 				FA247B3D1795A827008013D5 /* ANBoard.m */,
 			);
-			name = Game;
-			path = Monoploy/Game;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		FA618B6D1796E6B7008AABD8 /* Probability Finder */ = {
@@ -185,8 +229,20 @@
 				FA618B761796ED9D008AABD8 /* ANPreferences.h */,
 				FA618B771796ED9D008AABD8 /* ANPreferences.m */,
 			);
-			name = Settings;
-			path = Monoploy/Settings;
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FA618B7C179702DF008AABD8 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				FA618B7D179702EA008AABD8 /* ANBoardView.h */,
+				FA618B7E179702EA008AABD8 /* ANBoardView.m */,
+				FA618B8817975B0A008AABD8 /* ANPlayerView.h */,
+				FA618B8917975B0A008AABD8 /* ANPlayerView.m */,
+				FA618B9A1797710D008AABD8 /* ANLoadingView.h */,
+				FA618B9B1797710D008AABD8 /* ANLoadingView.m */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +302,15 @@
 				FA247B2617958345008013D5 /* Default@2x.png in Resources */,
 				FA247B2817958345008013D5 /* Default-568h@2x.png in Resources */,
 				FA247B3417958995008013D5 /* Cards.plist in Resources */,
+				FA618B8417970701008AABD8 /* chance@2x.png in Resources */,
+				FA618B8517970701008AABD8 /* railroad@2x.png in Resources */,
+				FA618B8617970701008AABD8 /* chest@2x.png in Resources */,
+				FA618B8717970701008AABD8 /* go@2x.png in Resources */,
+				FA618B8F17975F9D008AABD8 /* background@2x.png in Resources */,
+				FA618B91179760CE008AABD8 /* boardbg@2x.png in Resources */,
+				FA618B9517976537008AABD8 /* settings@2x.png in Resources */,
+				FA618B98179768AF008AABD8 /* chest_btn@2x.png in Resources */,
+				FA618B99179768AF008AABD8 /* chance_btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +333,10 @@
 				FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */,
 				FA618B781796ED9D008AABD8 /* ANPreferences.m in Sources */,
 				FA618B7B1796F2A4008AABD8 /* ANStatisticsGenerator.m in Sources */,
+				FA618B7F179702EA008AABD8 /* ANBoardView.m in Sources */,
+				FA618B8A17975B0A008AABD8 /* ANPlayerView.m in Sources */,
+				FA618B8D17975BE2008AABD8 /* ANMainViewController.m in Sources */,
+				FA618B9C1797710D008AABD8 /* ANLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

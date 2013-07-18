@@ -10,14 +10,14 @@
 
 @implementation ANProbabilityMap
 
-- (id)initWithValues:(float *)theValues {
+- (id)initWithValues:(double *)theValues {
     if ((self = [super init])) {
-        memcpy(values, theValues, sizeof(float) * 40);
+        memcpy(values, theValues, sizeof(double) * 40);
     }
     return self;
 }
 
-- (float)probabilityForSpace:(int)space {
+- (double)probabilityForSpace:(int)space {
     return values[space];
 }
 
@@ -25,7 +25,7 @@
  * Adds vector anotherMap to self.
  */
 - (ANProbabilityMap *)mapByAdding:(ANProbabilityMap *)anotherMap {
-    float newValues[40];
+    double newValues[40];
     for (int i = 0; i < 40; i++) {
         newValues[i] = [self probabilityForSpace:i] + [anotherMap probabilityForSpace:i];
     }
@@ -36,27 +36,34 @@
  * Returns a vector for whose values sum to exactly 1.
  */
 - (ANProbabilityMap *)mapByScalingToUnit {
-    float sum = 0, newValues[40];
-    for (int i = 0; i < 40; i++) {
-        sum += [self probabilityForSpace:i];
-    }
-    if (sum == 1) return self;
+    double sum = 0, newValues[40];
+    sum = [self sumValues];
+    memcpy(newValues, values, sizeof(double) * 40);
     for (int i = 0; i < 40; i++) {
         newValues[i] /= sum;
     }
     return [[ANProbabilityMap alloc] initWithValues:newValues];
 }
 
-- (float)sumValues {
+- (double)sumValues {
     return [self sumValuesExcluding:-1];
 }
 
-- (float)sumValuesExcluding:(int)index {
-    float sum = 0;
+- (double)sumValuesExcluding:(int)index {
+    double sum = 0;
     for (int i = 0; i < 40; i++) {
-        sum += values[index];
+        if (i == index) continue;
+        sum += values[i];
     }
     return sum;
+}
+
+- (NSString *)description {
+    NSMutableString * buffer = [NSMutableString stringWithString:@"map["];
+    for (int i = 0; i < 40; i++) {
+        [buffer appendFormat:@"%.03f%@", values[i], i != 39 ? @" " : @"]"];
+    }
+    return [buffer copy];
 }
 
 @end

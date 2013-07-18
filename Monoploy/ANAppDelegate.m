@@ -14,15 +14,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    ANCardSet * community = [ANCardSet defaultCommunityChest];
-    ANCardSet * chance = [ANCardSet defaultChance];
-    NSLog(@"%@, count %d", community, [community.unorderedCards count]);
-    NSLog(@"%@, count %d", chance, [chance.unorderedCards count]);
+    ANMainViewController * mainVC = [[ANMainViewController alloc] init];
+    navController = [[UINavigationController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
+    
+    [navController pushViewController:mainVC animated:NO];
     return YES;
 }
 

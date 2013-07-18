@@ -25,7 +25,7 @@
 }
 
 - (ANProbabilityMap *)probabilityMap {
-    float values[40];
+    double values[40];
     
     for (ANPossibleBoard * board in possibilities) {
         values[board.position] += board.probability;

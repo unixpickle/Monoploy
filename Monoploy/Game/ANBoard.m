@@ -96,7 +96,7 @@
     } else if (card.whence == ANCardWhenceUtility) {
         startPosition = [self closestUtility];
     }
-    return (startPosition + card.whence) % 40;
+    return (startPosition + card.seek) % 40;
 }
 
 #pragma mark - Generating New Boards -

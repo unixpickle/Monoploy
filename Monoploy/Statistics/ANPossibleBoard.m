@@ -10,10 +10,10 @@
 
 @interface ANPossibleBoard (Private)
 
-- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(float)prob;
+- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(double)prob;
 - (id)initWithChance:(ANCardSet *)theChance
       communityChest:(ANCardSet *)theCommChest
-            position:(int)loc probability:(float)prob;
+            position:(int)loc probability:(double)prob;
 
 /**
  * If we are on chance or community chest, this returns a list
@@ -23,7 +23,8 @@
 - (NSSet *)expandLocalMoves;
 
 - (ANPossibleBoard *)boardByFollowingCard:(ANCard *)card chance:(BOOL)c
-                              probability:(float)prob;
+                              probability:(double)prob;
+- (void)setJailRolls:(int)rolls;
 
 @end
 
@@ -31,7 +32,7 @@
 
 @synthesize probability;
 
-- (id)initWithBoard:(ANBoard *)board probability:(float)probs {
+- (id)initWithBoard:(ANBoard *)board probability:(double)probs {
     if ((self = [super initWithPosition:board.position
                                  chance:board.chance
                          communityChest:board.communityChest])) {
@@ -46,14 +47,16 @@
     for (int x1 = 1; x1 <= 6; x1++) {
         for (int x2 = 1; x2 <= 6; x2++) {
             int roll = x1 + x2;
-            float subProb = self.probability * 1.0/36.0;
+            double subProb = self.probability * 1.0/36.0;
             int newLoc = [self positionByAdvancing:roll];
             
             // if we are in jail, there's an extra parameter to consider
+            int nextJailRolls = 0;
             if (position == 30) {
-                if ([[ANPreferences sharedPreferences] jailOnlyDoubles]) {
+                if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && jailRolls < 3) {
                     if (x1 != x2) {
                         newLoc = position;
+                        nextJailRolls = jailRolls + 1;
                     }
                 }
             }
@@ -61,6 +64,7 @@
             ANPossibleBoard * board = [[ANPossibleBoard alloc] initWithOldBoard:self
                                                                        position:newLoc
                                                                     probability:subProb];
+            [board setJailRolls:nextJailRolls];
             NSSet * boardSet = [board expandLocalMoves];
             for (ANPossibleBoard * board in boardSet) {
                 [nodes addObject:board];
@@ -82,7 +86,7 @@
 
 #pragma mark - Private -
 
-- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(float)prob {
+- (id)initWithOldBoard:(ANBoard *)board position:(int)loc probability:(double)prob {
     if ((self = [super initWithPosition:loc chance:board.chance
                          communityChest:board.communityChest])) {
         probability = prob;
@@ -92,7 +96,7 @@
 
 - (id)initWithChance:(ANCardSet *)theChance
       communityChest:(ANCardSet *)theCommChest
-            position:(int)loc probability:(float)prob {
+            position:(int)loc probability:(double)prob {
     if ((self = [super initWithPosition:loc chance:theChance
                          communityChest:theCommChest])) {
         probability = prob;
@@ -103,7 +107,7 @@
 - (NSSet *)expandLocalMoves {
     NSSet * cards = nil;
     BOOL isChance = NO;
-    
+
     if (2 == position || 17 == position || 33 == position) {
         // community chest
         cards = [self.communityChest possibleDraws];
@@ -112,14 +116,14 @@
         isChance = YES;
         cards = [self.chance possibleDraws];
     }
-    
+
     if (!cards) {
         return [NSSet setWithObject:self];
     }
     
     // if there were cards, expand each possibility
     NSMutableSet * result = [NSMutableSet set];
-    float prob = self.probability / (float)[cards count];
+    double prob = self.probability / (double)[cards count];
     
     for (ANCard * card in cards) {
         ANPossibleBoard * board = [self boardByFollowingCard:card chance:isChance
@@ -130,7 +134,7 @@
 }
 
 - (ANPossibleBoard *)boardByFollowingCard:(ANCard *)card chance:(BOOL)c
-                              probability:(float)prob {
+                              probability:(double)prob {
     ANCardSet * theChance = self.chance;
     ANCardSet * theCommChest = self.communityChest;
     if (c) {
@@ -143,6 +147,10 @@
                                     communityChest:theCommChest
                                           position:newPos
                                        probability:prob];
+}
+
+- (void)setJailRolls:(int)rolls {
+    jailRolls = rolls;
 }
 
 @end
