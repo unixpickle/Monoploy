@@ -124,13 +124,39 @@
                            communityChest:communityChest];
 }
 
-- (id)boardByChangingJailRolls:(int)newRolls {
-    NSAssert(self.position == 30, @"Cannot change jail rolls from jail.");
-    ANBoardState newState = attributes;
-    newState.jailRolls = newRolls;
-    return [[ANBoard alloc] initWithState:newState
+- (id)boardByChangingState:(ANBoardState)state {
+    return [[ANBoard alloc] initWithState:state
                                    chance:chance
                            communityChest:communityChest];
+}
+
+#pragma mark - Generating New State -
+
+- (ANBoardState)stateByRolling:(int)roll doubles:(BOOL)doubles {
+    int newLoc = [self positionByAdvancing:roll];
+    
+    int nextRollCount = 0;
+    if (self.position == 30) {
+        // in jail, we can either escape or move up one
+        if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && self.jailRolls < 2) {
+            if (!doubles) {
+                newLoc = self.position;
+                nextRollCount = self.jailRolls + 1;
+            }
+        }
+    } else {
+        if (newLoc == 30) {
+            nextRollCount = 0;
+        } else if (doubles) {
+            nextRollCount = self.doubleRolls + 1;
+            if (nextRollCount == 3) {
+                newLoc = 30;
+                nextRollCount = 0;
+            }
+        }
+    }
+    
+    return ANBoardStateCreate(newLoc, nextRollCount);
 }
 
 @end

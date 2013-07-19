@@ -47,31 +47,8 @@
         for (int x2 = 1; x2 <= 6; x2++) {
             int roll = x1 + x2;
             double subProb = self.probability * 1.0/36.0;
-            int newLoc = [self positionByAdvancing:roll];
-            
-            int nextRollCount = 0;
-            if (self.position == 30) {
-                // in jail, we can either escape or move up one
-                if ([[ANPreferences sharedPreferences] jailOnlyDoubles] && self.jailRolls < 2) {
-                    if (x1 != x2) {
-                        newLoc = self.position;
-                        nextRollCount = self.jailRolls + 1;
-                    }
-                }
-            } else {
-                if (newLoc == 30) {
-                    nextRollCount = 0;
-                } else if (x1 == x2) {
-                    nextRollCount = self.doubleRolls + 1;
-                    if (nextRollCount == 3) {
-                        newLoc = 30;
-                        nextRollCount = 0;
-                    }
-                }
-            }
-            
             ANPossibleBoard * board = nil;
-            ANBoardState newState = ANBoardStateCreate(newLoc, nextRollCount);
+            ANBoardState newState = [self stateByRolling:roll doubles:(x1 == x2)];
             board = [[ANPossibleBoard alloc] initWithOldBoard:self
                                                         state:newState
                                                   probability:subProb];
@@ -89,19 +66,16 @@
 #pragma mark - Overloaded -
 
 - (id)boardByChangingPosition:(int)newPos {
-    ANBoardState newState;
+    NSAssert(self.attributes.doubleRolls == 0, @"Should not simply change position.");
+    ANBoardState newState = self.attributes;
     newState.position = newPos;
-    newState.doubleRolls = 0;
     return [[self.class alloc] initWithChance:self.chance
                                communityChest:self.communityChest
                                         state:newState
                                   probability:self.probability];
 }
 
-- (id)boardByChangingJailRolls:(int)rolls {
-    NSAssert(self.position == 30, @"Cannot change jail rolls if in jail.");
-    ANBoardState state = self.attributes;
-    state.jailRolls = rolls;
+- (id)boardByChangingState:(ANBoardState)state {
     return [[self.class alloc] initWithOldBoard:self state:state
                                     probability:self.probability];
 }

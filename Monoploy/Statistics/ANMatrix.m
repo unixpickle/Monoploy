@@ -8,11 +8,12 @@
 
 #import "ANMatrix.h"
 
-#define kTinyFloat 0.000001
+#define kAdmissiblePivotValue 0.00000001
 
 @interface ANMatrix (Private)
 
-- (id)initWithRows:(int)rows columns:(int)columns data:(double **)theData;
+- (double *)matrixData;
+- (id)initWithRows:(int)rows columns:(int)columns data:(double *)theData;
 
 @end
 
@@ -50,17 +51,15 @@
         NSArray * firstComponents = [[lines objectAtIndex:0] componentsSeparatedByString:@" "];
         columnCount = (int)[firstComponents count];
         rowCount = (int)[lines count];
-        matrixData = (double **)malloc(rowCount * sizeof(double *));
-        for (int j = 0; j < rowCount; j++) {
-            matrixData[j] = (double *)malloc(columnCount * sizeof(double));
-        }
+        matrixData = (double *)malloc(rowCount * columnCount * sizeof(double));
         for (int i = 0; i < [lines count]; i++) {
             NSArray * columnData = [[[lines objectAtIndex:i] stringByTrimmingCharactersInSet:whitespace] componentsSeparatedByString:@" "];
             if ([columnData count] != columnCount) {
                 return nil;
             }
             for (int columnIndex = 0; columnIndex < [columnData count]; columnIndex++) {
-                matrixData[i][columnIndex] = [[[columnData objectAtIndex:columnIndex] stringByTrimmingCharactersInSet:whitespace] doubleValue];
+                double value = [[[columnData objectAtIndex:columnIndex] stringByTrimmingCharactersInSet:whitespace] doubleValue];
+                [self setItem:value atRow:i column:columnIndex];
             }
         }
     }
@@ -71,11 +70,8 @@
     if ((self = [super init])) {
         rowCount = rows;
         columnCount = columns;
-        matrixData = (double **)malloc(rows * sizeof(double *));
-        for (int i = 0; i < rows; i++) {
-            matrixData[i] = (double *)malloc(columns * sizeof(double));
-            bzero(matrixData[i], sizeof(double) * columns);
-        }
+        matrixData = (double *)malloc(rows * columns * sizeof(double));
+        bzero(matrixData, sizeof(double) * rows * columns);
     }
     return self;
 }
@@ -102,39 +98,26 @@
 #pragma mark - Elements -
 
 - (double)itemAtRow:(int)row column:(int)column {
-    return matrixData[row][column];
+    return matrixData[(row * self.columnCount) + column];
 }
 
 - (void)setItem:(double)item atRow:(int)row column:(int)column {
-    matrixData[row][column] = item;
+    matrixData[(row * self.columnCount) + column] = item;
 }
 
 - (void)setRows:(int)newRowCount columns:(int)newColumnCount {
-    if (newColumnCount != columnCount) {
-        for (int i = 0; i < rowCount; i++) {
-            double * rowBuffer = matrixData[i];
-            rowBuffer = (double *)realloc(rowBuffer, sizeof(double) * newColumnCount);
-            if (newColumnCount > columnCount) {
-                bzero(&rowBuffer[columnCount], sizeof(double) * (newColumnCount - columnCount));
-            }
-            matrixData[i] = rowBuffer;
+    double * newData = (double *)malloc(sizeof(double) * newRowCount * newColumnCount);
+    bzero(newData, sizeof(double) * newRowCount * newColumnCount);
+    for (int row = 0; row < self.rowCount && row < newRowCount; row++) {
+        for (int column = 0; column < self.columnCount && column < newColumnCount; column++) {
+            int newIndex = (newColumnCount * row) + column;
+            newData[newIndex] = [self itemAtRow:row column:column];
         }
-        columnCount = newColumnCount;
     }
-    if (newRowCount < rowCount) {
-        for (int i = newRowCount; i < rowCount; i++) {
-            free(matrixData[i]);
-        }
-        matrixData = (double **)realloc(matrixData, sizeof(double *) * newRowCount);
-        rowCount = newRowCount;
-    } else {
-        matrixData = (double **)realloc(matrixData, sizeof(double *) * newRowCount);
-        for (int i = rowCount; i < newRowCount; i++) {
-            matrixData[i] = malloc(sizeof(double) * columnCount);
-            bzero(matrixData[i], sizeof(double) * columnCount);
-        }
-        rowCount = newRowCount;
-    }
+    free(matrixData);
+    matrixData = newData;
+    columnCount = newColumnCount;
+    rowCount = newRowCount;
 }
 
 #pragma mark - Basic Operations -
@@ -174,22 +157,15 @@
 }
 
 - (ANMatrix *)multiply:(ANMatrix *)anotherMatrix {
-    if ([anotherMatrix rowCount] != [self columnCount]) return nil;
     ANMatrix * newMatrix = [[ANMatrix alloc] initWithRows:[self rowCount]
                                                   columns:[anotherMatrix columnCount]];
-    for (int row = 0; row < rowCount; row++) {
-        for (int column = 0; column < [anotherMatrix columnCount]; column++) {
-            double sum = 0;
-            for (int i = 0; i < [self columnCount]; i++) {
-                double ourValue = [self itemAtRow:row column:i];
-                double otherValue = [anotherMatrix itemAtRow:i column:column];
-                sum += ourValue * otherValue;
-            }
-            if (fabsf(sum) < kTinyFloat) sum = 0;
-            [newMatrix setItem:sum atRow:row column:column];
-        }
-    }
+    NSAssert(anotherMatrix.rowCount == self.columnCount, @"Invalid multiplication dimensions.");
+    vDSP_mmulD(self.matrixData, 1, anotherMatrix.matrixData, 1,
+    newMatrix.matrixData, 1,
+    self.rowCount, anotherMatrix.columnCount,
+    anotherMatrix.rowCount);
     return newMatrix;
+    
 }
 
 - (ANMatrix *)rowEchelonTransform:(int *)rank {
@@ -201,7 +177,7 @@
         // check for the next row available as a pivot column
         int pivotRow = -1;
         for (int rowCheck = pivotsCompleted; rowCheck < [workingMatrix rowCount]; rowCheck++) {
-            if ([workingMatrix itemAtRow:rowCheck column:column] != 0) {
+            if (fabs([workingMatrix itemAtRow:rowCheck column:column]) > kAdmissiblePivotValue) {
                 pivotRow = rowCheck;
                 break;
             }
@@ -219,7 +195,7 @@
         if (rank) *rank += 1;
         double pivotValue = [workingMatrix itemAtRow:pivotsCompleted column:column];
         pivotsCompleted += 1;
-
+        
         ANMatrix * subtractionMatrix = [ANMatrix identityMatrix:[workingMatrix rowCount]];
         for (int rowReduce = pivotsCompleted; rowReduce < [workingMatrix rowCount]; rowReduce++) {
             if ([workingMatrix itemAtRow:rowReduce column:column] != 0) {
@@ -230,17 +206,18 @@
         transformation = [subtractionMatrix multiply:transformation];
         workingMatrix = [subtractionMatrix multiply:workingMatrix];
     }
+    lastWorkingMatrix = workingMatrix;
     return transformation;
 }
 
 - (ANMatrix *)reducedRowEchelonTransform:(int *)rank {
     ANMatrix * transform = [self rowEchelonTransform:rank];
-    ANMatrix * workingMatrix = [transform multiply:self];
+    ANMatrix * workingMatrix = lastWorkingMatrix;
     
     for (int row = workingMatrix.rowCount - 1; row >= 0; row--) {
         int pivotColumn = -1;
         for (int i = 0; i < workingMatrix.columnCount; i++) {
-            if (fabsf([workingMatrix itemAtRow:row column:i]) > kTinyFloat) { // pretty safe to assume it's valid
+            if (fabs([workingMatrix itemAtRow:row column:i]) > kAdmissiblePivotValue) {
                 pivotColumn = i;
                 break;
             }
@@ -260,6 +237,7 @@
         workingMatrix = [deduceMatrix multiply:workingMatrix];
     }
     
+    lastWorkingMatrix = workingMatrix;
     return transform;
 }
 
@@ -267,14 +245,16 @@
 
 - (ANMatrix *)nullspaceBasis {
     int rank;
-    ANMatrix * reducedRowEchelon = [[self reducedRowEchelonTransform:&rank] multiply:self];
+    [self reducedRowEchelonTransform:&rank];
+    ANMatrix * reducedRowEchelon = lastWorkingMatrix;
+    
     if (rank == [self columnCount]) return nil; // nullspace is empty
     int * columnTypes = (int *)malloc(sizeof(int) * [self columnCount]); // 1 = pivot, 0 = free
     bzero(columnTypes, sizeof(int) * [self columnCount]);
     // find all the pivot columns to distinguish our free variables
     for (int i = 0; i < [reducedRowEchelon rowCount]; i++) {
         for (int col = 0; col < [reducedRowEchelon columnCount]; col++) {
-            if ([reducedRowEchelon itemAtRow:i column:col] != 0) {
+            if (fabs([reducedRowEchelon itemAtRow:i column:col]) > kAdmissiblePivotValue) {
                 columnTypes[col] = 1;
                 break;
             }
@@ -300,7 +280,7 @@
             int undecidedIndex = -1;
             for (int j = 0; j < [self columnCount]; j++) {
                 if (decidedValues[j] != 0) continue;
-                if ([reducedRowEchelon itemAtRow:i column:j] != 0) {
+                if (fabs([reducedRowEchelon itemAtRow:i column:j]) > kAdmissiblePivotValue) {
                     undecidedIndex = j;
                     break;
                 }
@@ -360,26 +340,24 @@
 
 - (void)dealloc {
     if (matrixData) {
-        for (int i = 0; i < rowCount; i++) {
-            free(matrixData[i]);
-        }
         free(matrixData);
     }
 }
 
 #pragma mark - Private -
 
-- (id)initWithRows:(int)rows columns:(int)columns data:(double **)theData {
+- (id)initWithRows:(int)rows columns:(int)columns data:(double *)theData {
     if ((self = [super init])) {
         rowCount = rows;
         columnCount = columns;
-        matrixData = (double **)malloc(sizeof(double *) * rows);
-        for (int i = 0; i < rows; i++) {
-            matrixData[i] = (double *)malloc(sizeof(double) * columns);
-            memcpy(matrixData[i], theData[i], sizeof(double) * columns);
-        }
+        matrixData = (double *)malloc(sizeof(double) * columns * rows);
+        memcpy(matrixData, theData, sizeof(double) * columns * rows);
     }
     return self;
+}
+
+- (double *)matrixData {
+    return matrixData;
 }
 
 @end

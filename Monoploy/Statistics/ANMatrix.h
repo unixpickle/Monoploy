@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Accelerate/Accelerate.h>
 
 @interface ANMatrix : NSObject <NSCopying> {
-    double ** matrixData;
+    double * matrixData;
     int rowCount, columnCount;
+    
+    ANMatrix * lastWorkingMatrix;
 }
 
 + (ANMatrix *)identityMatrix:(int)size;

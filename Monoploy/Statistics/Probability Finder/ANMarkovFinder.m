@@ -8,11 +8,15 @@
 
 #import "ANMarkovFinder.h"
 
+#define kANMarkovSize (40*3)
+
 @interface ANMarkovFinder (Private)
 
 + (ANProbabilityMap *)mapForVector:(ANMatrix *)matrix;
+
 + (int)rowForBoard:(ANBoard *)board;
 + (id)moveBoard:(ANBoard *)board toRow:(int)row;
++ (int)propertyIndexForRow:(int)row;
 
 @end
 
@@ -32,10 +36,10 @@
 }
 
 - (id)initWithPossibleBoard:(ANPossibleBoard *)board {
-    if ((self = [super initWithRows:42 columns:42])) {
+    if ((self = [super initWithRows:kANMarkovSize columns:kANMarkovSize])) {
         // create a markov matrix
         // columns are sources, rows are destinations
-        for (int source = 0; source < 42; source++) {
+        for (int source = 0; source < kANMarkovSize; source++) {
             ANPossibleBoard * possib = [self.class moveBoard:board toRow:source];
             NSSet * outcomes = [possib expand];
             // compute the total probability of each location
@@ -48,8 +52,9 @@
         }
         
         // create the initial state vector
-        initialState = [[ANMatrix alloc] initWithRows:42 columns:1];
+        initialState = [[ANMatrix alloc] initWithRows:kANMarkovSize columns:1];
         [initialState setItem:1 atRow:[self.class rowForBoard:board] column:0];
+        NSAssert([self.class rowForBoard:board] < 40, @"Initial board shouldn't have rolled state");
     }
     return self;
 }
@@ -71,10 +76,10 @@
 
 - (id)finderForNextTurnExcluding:(int)space {
     ANMatrix * nextState = [self multiply:initialState];
-    [nextState setItem:0 atRow:space column:0];
-    if (space == 30) {
-        [nextState setItem:0 atRow:40 column:0];
-        [nextState setItem:0 atRow:41 column:0];
+    for (int i = 0; i < nextState.rowCount; i++) {
+        if ([self.class propertyIndexForRow:i] == space) {
+            [nextState setItem:0 atRow:i column:0];
+        }
     }
     return [[ANMarkovFinder alloc] initWithMatrix:self
                                           initial:nextState];
@@ -83,10 +88,10 @@
 #pragma mark - Markov Specific -
 
 - (ANProbabilityMap *)steadyStateMap {
-    ANMatrix * identity = [ANMatrix identityMatrix:42];
+    ANMatrix * identity = [ANMatrix identityMatrix:self.columnCount];
     ANMatrix * difference = [self add:[identity scale:-1]];
     ANMatrix * nullspace = [difference nullspaceBasis];
-    NSAssert(nullspace.rowCount == 42 && nullspace.columnCount == 1, @"Invalid nullspace");
+    NSAssert(nullspace.rowCount == self.rowCount && nullspace.columnCount == 1, @"Invalid nullspace");
     return [[self.class mapForVector:nullspace] mapByScalingToUnit];
 }
 
@@ -94,33 +99,26 @@
 
 + (ANProbabilityMap *)mapForVector:(ANMatrix *)matrix {
     double values[40];
-    for (int i = 0; i < 40; i++) {
-        values[i] = [matrix itemAtRow:i column:0];
+    bzero(values, sizeof(double) * 40);
+    for (int i = 0; i < kANMarkovSize; i++) {
+        double val = [matrix itemAtRow:i column:0];
+        int property = [self propertyIndexForRow:i];
+        values[property] += val;
     }
-    values[30] += [matrix itemAtRow:40 column:0];
-    values[30] += [matrix itemAtRow:41 column:0];
     return [[ANProbabilityMap alloc] initWithValues:values];
 }
 
 + (int)rowForBoard:(ANBoard *)board {
-    if (board.position == 30) {
-        NSAssert(board.jailRolls < 3, @"Board cannot have more than 2 rolls in jail.");
-        if (board.jailRolls == 0) {
-            return 30;
-        }
-        return board.jailRolls + 39;
-    } else {
-        return board.position;
-    }
+    return board.position + (board.attributes.jailRolls * 40);
 }
 
 + (id)moveBoard:(ANBoard *)board toRow:(int)row {
-    if (row < 40) {
-        return [board boardByChangingPosition:row];
-    } else {
-        id newPos = [board boardByChangingPosition:30];
-        return [newPos boardByChangingJailRolls:(row - 39)];
-    }
+    ANBoardState state = ANBoardStateCreate(row % 40, row / 40);
+    return [board boardByChangingState:state];
+}
+
++ (int)propertyIndexForRow:(int)row {
+    return row % 40;
 }
 
 @end

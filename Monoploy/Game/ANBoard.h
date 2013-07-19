@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ANCardSet.h"
+#import "ANPreferences.h"
 
 typedef struct {
     int position;
@@ -47,6 +48,7 @@ ANBoardState ANBoardStateCreate(int pos, int rollCount);
 - (int)positionByFollowingCard:(ANCard *)card;
 
 - (id)boardByChangingPosition:(int)newPos;
-- (id)boardByChangingJailRolls:(int)newRolls;
+- (id)boardByChangingState:(ANBoardState)state;
+- (ANBoardState)stateByRolling:(int)roll doubles:(BOOL)doubles;
 
 @end
