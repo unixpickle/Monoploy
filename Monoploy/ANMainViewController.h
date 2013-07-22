@@ -11,8 +11,9 @@
 #import "ANLoadingView.h"
 #import "ANStatisticsGenerator.h"
 #import "ANPreferencesViewController.h"
+#import "ANCardsViewController.h"
 
-@interface ANMainViewController : UIViewController <ANStatisticsGenerator> {
+@interface ANMainViewController : UIViewController <ANStatisticsGenerator, ANCardsViewControllerDelegate> {
     ANBoardView * boardView;
     ANCardSet * chance;
     ANCardSet * communityChest;

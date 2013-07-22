@@ -23,6 +23,7 @@
 
 - (ANCardSet *)cardSetByDrawing:(ANCard *)card;
 - (ANCardSet *)cardSetByShuffling;
+- (ANCardSet *)cardSetByUndrawinng:(ANCard *)card;
 
 /**
  * Returns an array of ANCard objects which may

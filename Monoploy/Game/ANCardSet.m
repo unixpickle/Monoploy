@@ -60,12 +60,31 @@ static NSArray * cards_for_count_descriptor(NSArray * descriptions, NSString * d
 }
 
 - (ANCardSet *)cardSetByShuffling {
-    NSMutableArray * unordered = [[NSMutableArray alloc] init];
-    [unordered addObjectsFromArray:orderedCards];
-    [unordered addObjectsFromArray:unorderedCards];
+    NSMutableArray * mUnordered = [[NSMutableArray alloc] init];
+    [mUnordered addObjectsFromArray:orderedCards];
+    [mUnordered addObjectsFromArray:unorderedCards];
+    NSArray * unordered = [mUnordered sortedArrayUsingSelector:@selector(compare:)];
+    return [[ANCardSet alloc] initWithName:name
+                                 unordered:unordered
+                                   ordered:[NSArray array]];
+}
+
+- (ANCardSet *)cardSetByUndrawinng:(ANCard *)card {
+    int insertIndex = [unorderedCards count];
+    for (int i = 0; i < [unorderedCards count]; i++) {
+        ANCard * aCard = [unorderedCards objectAtIndex:i];
+        if ([aCard compare:card] == NSOrderedDescending) {
+            insertIndex = i;
+            break;
+        }
+    }
+    NSMutableArray * unordered = [unorderedCards mutableCopy];
+    [unordered insertObject:card atIndex:insertIndex];
+    NSMutableArray * ordered = [orderedCards mutableCopy];
+    [ordered removeObject:card];
     return [[ANCardSet alloc] initWithName:name
                                  unordered:[unordered copy]
-                                   ordered:[NSArray array]];
+                                   ordered:[ordered copy]];
 }
 
 - (NSSet *)possibleDraws {

@@ -126,7 +126,15 @@
     for (ANCard * card in cards) {
         ANPossibleBoard * board = [self boardByFollowingCard:card chance:isChance
                                                  probability:prob];
-        [result addObject:board];
+        NSSet * subset = nil;
+        if (board.position != self.position) {
+            subset = [board expandLocalMoves];
+        } else {
+            subset = [NSSet setWithObject:board];
+        }
+        for (ANPossibleBoard * aBoard in subset) {
+            [result addObject:aBoard];
+        }
     }
     return [result copy];
 }

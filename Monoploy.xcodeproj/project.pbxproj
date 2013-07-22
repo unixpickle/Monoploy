@@ -25,6 +25,7 @@
 		FA2C25101798371300D9ABA1 /* ANPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2C250F1798371300D9ABA1 /* ANPreferencesViewController.m */; };
 		FA2C251617984AA800D9ABA1 /* ANSlideoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2C251517984AA700D9ABA1 /* ANSlideoutView.m */; };
 		FA30EF8C1799B10900AAAD74 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA30EF8B1799B10900AAAD74 /* Accelerate.framework */; };
+		FA30EF921799DB2300AAAD74 /* ANCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA30EF911799DB2300AAAD74 /* ANCardsViewController.m */; };
 		FA618B6B1796E2B7008AABD8 /* ANProbabilityMap.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */; };
 		FA618B711796E6C6008AABD8 /* ANMarkovFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B701796E6C6008AABD8 /* ANMarkovFinder.m */; };
 		FA618B741796EADA008AABD8 /* ANRecursiveFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B731796EADA008AABD8 /* ANRecursiveFinder.m */; };
@@ -76,6 +77,8 @@
 		FA2C251417984AA700D9ABA1 /* ANSlideoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSlideoutView.h; sourceTree = "<group>"; };
 		FA2C251517984AA700D9ABA1 /* ANSlideoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANSlideoutView.m; sourceTree = "<group>"; };
 		FA30EF8B1799B10900AAAD74 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		FA30EF901799DB2300AAAD74 /* ANCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCardsViewController.h; sourceTree = "<group>"; };
+		FA30EF911799DB2300AAAD74 /* ANCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCardsViewController.m; sourceTree = "<group>"; };
 		FA618B691796E2B7008AABD8 /* ANProbabilityMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANProbabilityMap.h; sourceTree = "<group>"; };
 		FA618B6A1796E2B7008AABD8 /* ANProbabilityMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANProbabilityMap.m; sourceTree = "<group>"; };
 		FA618B6E1796E6B7008AABD8 /* ANProbabilityFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANProbabilityFinder.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				FA2C250F1798371300D9ABA1 /* ANPreferencesViewController.m */,
 				FAC2931B17985C6E00274B2A /* ANRemoteRestriction.h */,
 				FAC2931C17985C6E00274B2A /* ANRemoteRestriction.m */,
+				FA30EF901799DB2300AAAD74 /* ANCardsViewController.h */,
+				FA30EF911799DB2300AAAD74 /* ANCardsViewController.m */,
 				FA247B1817958345008013D5 /* Supporting Files */,
 			);
 			path = Monoploy;
@@ -355,6 +360,7 @@
 				FA2C25101798371300D9ABA1 /* ANPreferencesViewController.m in Sources */,
 				FA2C251617984AA800D9ABA1 /* ANSlideoutView.m in Sources */,
 				FAC2931D17985C6E00274B2A /* ANRemoteRestriction.m in Sources */,
+				FA30EF921799DB2300AAAD74 /* ANCardsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

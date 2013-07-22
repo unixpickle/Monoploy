@@ -24,12 +24,6 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:220/255.0 green:247/255.0 blue:240.0/255.0 alpha:1];
     
-    /*UIImage * bgImage = [UIImage imageNamed:@"background"];
-    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [bg setContentMode:UIViewContentModeScaleAspectFill];
-    [bg setImage:bgImage];
-    [self.view addSubview:bg];*/
-    
     CGFloat size = (self.view.frame.size.height - 308 - 44) / 2.0;
     boardView = [[ANBoardView alloc] initWithStandardSize:CGPointMake(6, size)];
     [self.view addSubview:boardView];
@@ -43,15 +37,24 @@
     communityChest = [ANCardSet defaultCommunityChest];
 }
 
+#pragma mark - Delegates -
+
 - (void)statisticsGeneratorCompleted:(ANStatisticsGenerator *)gen {
     [loadingView hide];
     ANProbabilityMap * map = gen.result;
-    NSLog(@"%@", map);
     for (int i = 0; i < 40; i++) {
         [boardView setHeat:[map probabilityForSpace:i]
                    atIndex:i];
     }
     [boardView setNeedsDisplay];
+}
+
+- (void)cardsViewControllerChanged:(ANCardsViewController *)cvc {
+    if ([cvc.title isEqualToString:@"Community Chest"]) {
+        communityChest = [cvc cards];
+    } else {
+        chance = [cvc cards];
+    }
 }
 
 #pragma mark - Button Events -
@@ -77,11 +80,17 @@
 }
 
 - (void)showCommunityChest:(id)sender {
-    
+    ANCardsViewController * cards = [[ANCardsViewController alloc] initWithCards:communityChest];
+    cards.title = @"Community Chest";
+    cards.delegate = self;
+    [self.navigationController pushViewController:cards animated:YES];
 }
 
 - (void)showChance:(id)sender {
-    
+    ANCardsViewController * cards = [[ANCardsViewController alloc] initWithCards:chance];
+    cards.title = @"Chance";
+    cards.delegate = self;
+    [self.navigationController pushViewController:cards animated:YES];
 }
 
 #pragma mark - Other Events -
