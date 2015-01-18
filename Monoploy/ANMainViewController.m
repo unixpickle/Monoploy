@@ -24,8 +24,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:220/255.0 green:247/255.0 blue:240.0/255.0 alpha:1];
     
-    CGFloat size = (self.view.frame.size.height - 308 - 44) / 2.0;
-    boardView = [[ANBoardView alloc] initWithStandardSize:CGPointMake(6, size)];
+    boardView = [[ANBoardView alloc] initWithStandardSize:CGPointMake(6, 120)];
     [self.view addSubview:boardView];
     
     [self generateNavButtons];
@@ -146,14 +145,14 @@
 }
 
 - (void)generateMovesSlider {
-    movesSlider = [[UISlider alloc] initWithFrame:CGRectMake(40, 10, 140, 35)];
+    movesSlider = [[UISlider alloc] initWithFrame:CGRectMake(40, 70, 140, 35)];
     movesSlider.minimumValue = 1;
     movesSlider.maximumValue = 10;
     movesSlider.value = 3;
     [movesSlider addTarget:self action:@selector(sliderChanged:)
           forControlEvents:UIControlEventValueChanged];
     
-    movesLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 10, 90, 35)];
+    movesLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 70, 90, 35)];
     movesLabel.layer.cornerRadius = 5;
     movesLabel.text = @"3 moves";
     movesLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];

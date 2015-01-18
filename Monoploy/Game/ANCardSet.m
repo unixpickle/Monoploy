@@ -70,7 +70,7 @@ static NSArray * cards_for_count_descriptor(NSArray * descriptions, NSString * d
 }
 
 - (ANCardSet *)cardSetByUndrawinng:(ANCard *)card {
-    int insertIndex = [unorderedCards count];
+    int insertIndex = (int)[unorderedCards count];
     for (int i = 0; i < [unorderedCards count]; i++) {
         ANCard * aCard = [unorderedCards objectAtIndex:i];
         if ([aCard compare:card] == NSOrderedDescending) {

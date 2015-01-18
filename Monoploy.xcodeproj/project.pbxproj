@@ -44,7 +44,6 @@
 		FA618B98179768AF008AABD8 /* chest_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B96179768AF008AABD8 /* chest_btn@2x.png */; };
 		FA618B99179768AF008AABD8 /* chance_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA618B97179768AF008AABD8 /* chance_btn@2x.png */; };
 		FA618B9C1797710D008AABD8 /* ANLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA618B9B1797710D008AABD8 /* ANLoadingView.m */; };
-		FAC2931D17985C6E00274B2A /* ANRemoteRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC2931C17985C6E00274B2A /* ANRemoteRestriction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,8 +106,6 @@
 		FA618B97179768AF008AABD8 /* chance_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chance_btn@2x.png"; sourceTree = "<group>"; };
 		FA618B9A1797710D008AABD8 /* ANLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANLoadingView.h; sourceTree = "<group>"; };
 		FA618B9B1797710D008AABD8 /* ANLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANLoadingView.m; sourceTree = "<group>"; };
-		FAC2931B17985C6E00274B2A /* ANRemoteRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRemoteRestriction.h; sourceTree = "<group>"; };
-		FAC2931C17985C6E00274B2A /* ANRemoteRestriction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRemoteRestriction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +166,6 @@
 				FA618B8C17975BE2008AABD8 /* ANMainViewController.m */,
 				FA2C250E1798371300D9ABA1 /* ANPreferencesViewController.h */,
 				FA2C250F1798371300D9ABA1 /* ANPreferencesViewController.m */,
-				FAC2931B17985C6E00274B2A /* ANRemoteRestriction.h */,
-				FAC2931C17985C6E00274B2A /* ANRemoteRestriction.m */,
 				FA30EF901799DB2300AAAD74 /* ANCardsViewController.h */,
 				FA30EF911799DB2300AAAD74 /* ANCardsViewController.m */,
 				FA247B1817958345008013D5 /* Supporting Files */,
@@ -359,7 +354,6 @@
 				FA618B9C1797710D008AABD8 /* ANLoadingView.m in Sources */,
 				FA2C25101798371300D9ABA1 /* ANPreferencesViewController.m in Sources */,
 				FA2C251617984AA800D9ABA1 /* ANSlideoutView.m in Sources */,
-				FAC2931D17985C6E00274B2A /* ANRemoteRestriction.m in Sources */,
 				FA30EF921799DB2300AAAD74 /* ANCardsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
